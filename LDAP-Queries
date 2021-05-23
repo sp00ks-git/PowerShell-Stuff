@@ -1,0 +1,4 @@
+#Domain Enumeration
+
+#Group Membership
+([ADSISEARCHER]"samaccountname=$('ENTERUSERNAME')").Findone().Properties.memberof -replace '^CN=([^,]+).+$','$1' | sort-object
