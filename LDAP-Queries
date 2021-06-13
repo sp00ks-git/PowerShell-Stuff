@@ -16,3 +16,21 @@ To test
  
 # Find user based on name and display all properties
 ([adsisearcher]"(&(objectClass=person)(objectClass=user)(name=pawel.janowicz))").FindAll().properties
+
+
+([adsisearcher]"(&amp;(objectcategory=computer)(lastlogontimestamp<=$((Get-Date).AddDays(-105).ToFileTime())))").findall()
+
+# Filters for all privileged accounts.
+([adsisearcher]”(&(admincount=1))”).FindAll() [PowerShell]
+
+# Enumerates all of the crackable service accounts.
+([adsisearcher]”(&(objectClass=User)(primarygroupid=513)
+(servicePrincipalName=*))”).FindAll() | ForEach-Object { “Name:
+$($_.properties.name)””SPN:$($_.properties.serviceprincipalname)””Path:
+$($_.Path)”””}
+
+# Gives us all attributes associated with a particular computer.
+(([adsisearcher]”(name=Computer)”).FindAll()) | Select -Expand Properties
+
+# View Users with Description Field
+([adsisearcher]"(&(objectClass=group)(samaccountname=*))").FindAll().Properties | % { Write-Host $_.samaccountname : $_.description } 
