@@ -2,3 +2,17 @@
 
 #Group Membership
 ([ADSISEARCHER]"samaccountname=$('ENTERUSERNAME')").Findone().Properties.memberof -replace '^CN=([^,]+).+$','$1' | sort-object
+
+
+
+To test
+# Find all users with given name Pawel
+([adsisearcher]"givenname=pawel").FindAll()
+ 
+# Find users based on other attibutes
+([adsisearcher]"(&(objectClass=User)(surname=janowicz))").FindAll()
+([adsisearcher]"(&(objectClass=User)(city=Warsaw))").FindAll()
+([adsisearcher]"(&(objectClass=User)(mobile=+48555444333))").FindOne()
+ 
+# Find user based on name and display all properties
+([adsisearcher]"(&(objectClass=person)(objectClass=user)(name=pawel.janowicz))").FindAll().properties
