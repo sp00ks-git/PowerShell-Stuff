@@ -4,7 +4,10 @@ Useful set of Powershell related commands during engagements
 #ENABLE TLS1.2 if you receive a message Regarding an ISSUE with TLS
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 
+#Powershell Specific Tooling
 
+# PowerSharpPack
+PowerSharpPack -SharpShares -Command "--shares"
 
 #Domain Enumeration
 
