@@ -23,11 +23,8 @@ To test
 # Filters for all privileged accounts.
 ([adsisearcher]”(&(admincount=1))”).FindAll() [PowerShell]
 
-# Enumerates all of the crackable service accounts.
-([adsisearcher]”(&(objectClass=User)(primarygroupid=513)
-(servicePrincipalName=*))”).FindAll() | ForEach-Object { “Name:
-$($_.properties.name)””SPN:$($_.properties.serviceprincipalname)””Path:
-$($_.Path)”””}
+# Enumerates all of the crackable service accounts. (Works well no need to import modules)
+([adsisearcher]”(&(objectClass=User)(primarygroupid=513)(servicePrincipalName=*))”).FindAll() | ForEach-Object { “Name:$($_.properties.name)””SPN:$($_.properties.serviceprincipalname)””Path:$($_.Path)”””}
 
 # Gives us all attributes associated with a particular computer.
 (([adsisearcher]”(name=Computer)”).FindAll()) | Select -Expand Properties
