@@ -1,4 +1,8 @@
 # Powershell_stuff
+
+#Check if Full or Constrained Language Mode is in place.
+$ExecutionContext.SessionState.LanguageMode
+
 Useful set of Powershell related commands during engagements
 
 	$processes = Get-Process
