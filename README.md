@@ -3,7 +3,7 @@
 #Check if Full or Constrained Language Mode is in place.   
 $ExecutionContext.SessionState.LanguageMode
 
-#Set Proxy SEttings Manually in Powershell (enter in Creds)
+#Set Proxy Settings Manually in Powershell (enter in Creds)
 
 $Wcl=New-Object System.Net.WebClient   
 $Creds=Get-Credential   
