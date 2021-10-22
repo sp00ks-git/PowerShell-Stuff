@@ -12,7 +12,7 @@ $ExecutionContext.SessionState.LanguageMode
 
 If you get a 200 back you're all good.
 
-CLM Bypass   
+# CLM Bypass   
 	#Path to Powershell
 	$CMDLine = "$PSHOMEpowershell.exe"
 
