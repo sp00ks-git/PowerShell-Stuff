@@ -1,7 +1,11 @@
 # Powershell_stuff
 
 #Check if Full or Constrained Language Mode is in place.   
-$ExecutionContext.SessionState.LanguageMode
+	`$ExecutionContext.SessionState.LanguageMode   `
+
+#Check if CredGuard is switched ON. (True = On)
+
+	'CredentialGuard' -match ((Get-ComputerInfo).DeviceGuardSecurityServicesConfigured)   
 
 #Set Proxy Settings Manually in Powershell (enter in Creds)
 
