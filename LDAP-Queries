@@ -10,14 +10,12 @@ To test
 ([adsisearcher]"givenname=pawel").FindAll()
  
 # Find users based on other attibutes
-([adsisearcher]"(&(objectClass=User)(surname=janowicz))").FindAll()
-([adsisearcher]"(&(objectClass=User)(city=Warsaw))").FindAll()
-([adsisearcher]"(&(objectClass=User)(mobile=+48555444333))").FindOne()
+([adsisearcher]"(&(objectClass=User)(surname=SURNAME))").FindAll()
+([adsisearcher]"(&(objectClass=User)(city=PARIS))").FindAll()
+([adsisearcher]"(&(objectClass=User)(mobile=+48123456789))").FindOne()
  
 # Find user based on name and display all properties
-([adsisearcher]"(&(objectClass=person)(objectClass=user)(name=pawel.janowicz))").FindAll().properties
-
-
+([adsisearcher]"(&(objectClass=person)(objectClass=user)(name=pawel.j))").FindAll().properties
 ([adsisearcher]"(&amp;(objectcategory=computer)(lastlogontimestamp<=$((Get-Date).AddDays(-105).ToFileTime())))").findall()
 
 # Filters for all privileged accounts.
