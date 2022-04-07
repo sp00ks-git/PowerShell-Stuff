@@ -1,14 +1,24 @@
 #Domain Enumeration
 
 #Group Membership
+```
 ([ADSISEARCHER]"samaccountname=$('ENTERUSERNAME')").Findone().Properties.memberof -replace '^CN=([^,]+).+$','$1' | sort-object
+```
 
-
+#Account PAssword Last Reset
+```
+$searcher=New-Object DirectoryServices.DirectorySearcher
+$searcher.Filter="(&(samaccountname=DOMINUSERNAMEHERE))"
+$results=$searcher.findone()
+[datetime]::fromfiletime($results.properties.pwdlastset[0])
+```
 
 To test
 # Find all users with given name Pawel
+```
 ([adsisearcher]"givenname=pawel").FindAll()
- 
+```
+
 # Find users based on other attibutes
 ([adsisearcher]"(&(objectClass=User)(surname=SURNAME))").FindAll()
 ([adsisearcher]"(&(objectClass=User)(city=PARIS))").FindAll()
