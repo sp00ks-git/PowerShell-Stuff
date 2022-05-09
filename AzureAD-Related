@@ -1,0 +1,6 @@
+#Basic info about Azure AD connection to EndPoint (super Useful!) tennant ID etc   
+
+```
+dsregcmd.exe /status   
+```
+
