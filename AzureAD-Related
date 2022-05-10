@@ -7,8 +7,11 @@ dsregcmd.exe /status
 Instal AZ Powershell 7.5.0 Module - (doesn't require local admin)
 Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
 
+Install AzureAD Module - (doesnt require local admin)
+Install-Module -Name AzureAD -Scope CurrentUser -Repository PSGallery -Force
+
 Install MSOnline Module - (doesnt require local admin)
-Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
+Install-Module -Name MSOnline -Scope CurrentUser -Repository PSGallery -Force
 
 
 
