@@ -4,3 +4,6 @@
 dsregcmd.exe /status   
 ```
 
+Instal AZ Powershell 7.5.0 Module - (doesn't require local admin)
+Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force
+
