@@ -88,6 +88,11 @@ PowerSharpPack -SharpShares -Command "--shares"
 ([ADSISEARCHER]"samaccountname=$('ENTERUSERNAME')").Findone().Properties.memberof -replace '^CN=([^,]+).+$','$1' | sort-object
 ```
 
+#Forest Info
+```
+[System.DirectoryServices.ActiveDirectory.Forest]::GetCurrentForest()
+```
+
 #Aliases
 ```
 dir = Get-ChildItem
